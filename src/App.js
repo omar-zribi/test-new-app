@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './styles.css';
 import RecipeList from './components/RecipeList';
 import RecipeForm from './components/RecipeForm';
 import RecipeDetail from './components/RecipeDetail';

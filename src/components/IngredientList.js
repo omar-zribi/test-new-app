@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function IngredientList({ ingredients }) {
-  return (
+const IngredientList = ({ ingredients }) => (
   <ul>
     {ingredients.map((ingredient, index) => (
       <li key={index}>{ingredient}</li>
     ))}
   </ul>
-      
-  )
-}
+);
+
+export default IngredientList;

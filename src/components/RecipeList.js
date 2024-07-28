@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from 'react';
 
-export default class RecipeList extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Liste des Recettes</h2>
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id} onClick={() => onSelectRecipe(recipe)}>
-              {recipe.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+const RecipeList = ({ recipes, onSelectRecipe }) => (
+  <div>
+    <h2>Liste des Recettes</h2>
+    <ul>
+      {recipes&&recipes.map(recipe => (
+        <li key={recipe.id} onClick={() => onSelectRecipe(recipe)}>
+          {recipe.name}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+export default RecipeList;
