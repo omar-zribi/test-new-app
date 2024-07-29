@@ -1,33 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import RecipeList from './components/RecipeList';
 import RecipeForm from './components/RecipeForm';
 import RecipeDetail from './components/RecipeDetail';
 
 const App = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [editingRecipe, setEditingRecipe] = useState(null);
-
-  const handleSaveRecipe = (recipe) => {
-    if (editingRecipe) {
-      setRecipes(recipes.map(r => (r.id === editingRecipe.id ? { ...recipe, id: r.id } : r)));
-    } else {
-      setRecipes([...recipes, { ...recipe, id: Date.now() }]);
-    }
-    setEditingRecipe(null);
-    setSelectedRecipe(null);
-  };
+  const selectedRecipe = useSelector(state => state.recipes.selectedRecipe);
 
   return (
     <div>
-      <RecipeList recipes={recipes} onSelectRecipe={setSelectedRecipe} />
-      {selectedRecipe && <RecipeDetail recipe={selectedRecipe} />}
-      {(selectedRecipe || editingRecipe) && (
-        <RecipeForm
-          onSave={handleSaveRecipe}
-          recipe={editingRecipe || selectedRecipe}
-        />
-      )}
+      <RecipeList />
+      {/* <RecipeForm /> */}
+      {/* {selectedRecipe && <RecipeDetail recipe={selectedRecipe} />} */}
     </div>
   );
 };
